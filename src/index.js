@@ -329,7 +329,7 @@ const endpoints = [
  "https://jsonplaceholder.typicode.com/todos/4"
 ]
 
-const promises = endpoints.map(url => fetch(url).then(res => res.json()))
+//const promises = endpoints.map(url => fetch(url).then(res => res.json()))
 
 /* Promise.all(promises)
 .then(body => console.log(body)) */
@@ -596,3 +596,19 @@ function say(message='Hi') {
 
 
 
+
+
+
+
+setTimeout(() => {
+  console.log('setTimeout')
+}, 0);
+
+const myPromise = new Promise(resolve => {
+  resolve('Promise data')
+})
+myPromise.then(data => console.log(data))
+
+for(let i = 0; i <= 10000; i++) {
+  console.log(i)
+}
