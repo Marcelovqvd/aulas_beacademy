@@ -221,9 +221,10 @@ class Masc extends Candidates {
   }
 }
 
+
 const candidate1 = new Masc('Marcelo', 'Vasques', 123456789, true)
-const candidate2 = new Candidates('Maria', 'Fulana', 456123789)
-// console.log(candidate1)
+const candidate2 = new Candidates('Maria', 'Fulana', 111111)
+
 
 
 
@@ -241,12 +242,11 @@ function hello(name) {
     console.log(name)
 }
 
-function helloUser(callback) {    
-  callback('Marcelo')
+function helloUser(n) { 
+  n('Marcelo Vasques')
 }
 
-// helloUser(hello)
-
+//helloUser(hello)
 
 
 /* const callback = e => alert('Foi clicado')
@@ -262,6 +262,8 @@ window.addEventListener('click', callback) */
 
 
 
+//setTimeout(() => console.log('Meu resultado'), 5000);
+
 /* Promises */
 function show() {
   setTimeout(() => {
@@ -271,7 +273,7 @@ function show() {
   console.log('Até logo!')
 }
 
-//show()
+// show()
 
 /* const minhaPromise = new Promise((resolve, reject) => {  
   let n = 9
@@ -282,10 +284,7 @@ function show() {
   }
 }) */
 
-/* minhaPromise
-.then(result => console.log('resolveu'))
-.catch(err => console.log('errou'))
-.finally(() => console.log('Finally!')) */
+//minhaPromise.then(result => console.log('resolveu')).catch(err => console.log('errouuuuuuu')).finally(() => console.log('Finally!'))
 
 
 // ---- exemplo ----
@@ -303,12 +302,15 @@ setTimeout(() => {
 
 setTimeout(() => {  
   showGoodbye()
-}, 4000); */
+}, 1000); */
+
+
+
 
 
 // Promise.all()
-const promise1 = new Promise((resolve) => {
-  resolve('promise1')
+/* const promise1 = new Promise((r) => {
+  r('promise1')
 })
 const promise2 = new Promise((resolve) => {
   resolve('promise2')
@@ -317,43 +319,64 @@ const promise3 = new Promise((resolve) => {
   resolve('promise3')
 })
 
-/* Promise.all([promise1, promise2, promise3])
+Promise.all([promise1, promise2, promise3])
 .then(res => console.log(res)) */
 
 
 // Promise.all()
-const endpoints = [
+/* const endpoints = [
  "https://jsonplaceholder.typicode.com/todos/1",
  "https://jsonplaceholder.typicode.com/todos/2",
  "https://jsonplaceholder.typicode.com/todos/3",
  "https://jsonplaceholder.typicode.com/todos/4"
 ]
 
-//const promises = endpoints.map(url => fetch(url).then(res => res.json()))
+const promises = endpoints.map(url => fetch(url).then(res => res.json()))
 
-/* Promise.all(promises)
+Promise.all(promises)
 .then(body => console.log(body)) */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // fetch()
 /* const firstUser = (userId) => {
  let response = fetch(`https://jsonplaceholder.typicode.com/todos/${userId}`)
  .then(res => res.json())
- .then(data => console.log(data))
-} */
+ .then(data => console.log(`O title é ${data.title}`))
+}
 
-// firstUser(1)
+firstUser(2) */
 
 
 /* async/await */
-
+/* 
 const firstUser = async (userId) => {
  let response = await fetch(`https://jsonplaceholder.typicode.com/todos/${userId}`)
  let resultJSON = await response.json()
- //let data = resultJSON.title
- console.log(resultJSON)
+ let title = await resultJSON.title
+ console.log(title)
 }
-//firstUser(1)
+
+firstUser(1) */
 
 
 
@@ -362,24 +385,27 @@ const firstUser = async (userId) => {
 
 
 
-
+//import fetch from 'node-fetch';
 
 /* try/catch */
 // https://jsonplaceholder.typicode.com/todos/1
-async function user() {
+
+/* async function user() {
   try {
-    let response = await fetch(`https://jslaceholder.typicode.com/todos/1`);
+    let response = await fetch(`https://jsonplaceholder.typicode.com/todos/1`);
     let data = await response.json()
-    console.log(data)
+    console.log(data.title)
   } catch (error) {
-      console.log('error ---->', error)
-      throw new Error('Erro no fetch')
+      throw new Error('Deu algum erro na requisição')
   } finally {
     console.log('acabou')
-  }
-  
+  }  
 }
-// user()
+
+user() */
+
+
+
 
 
 
@@ -393,32 +419,29 @@ async function user() {
 
 const err = new Error()
 
-const x = Error("I was created using a function call!");
+const x = Error("Este é meu erro");
 
-// above has the same functionality as following
-const y = new Error('I was constructed via the "new" keyword!');
+//console.log(x)
 
-// console.log(err)
 
-class customError {
+/* class customError {
   constructor(message) {
     this.message = message
   }
 }
 
-function function1() {
-  console.log('function1 executou')
+*/
+
+
+/* function function1() {
   try {
     console.log('function1 no try')
-    codigoA
   } catch (error) {
-    console.log('Erro na function1')
-    console.error('Erro na function1', error)
     throw new customError('Erro na function1')
   }
 }
 
-// function1()
+function1()
 
 
 function function2() {
@@ -443,7 +466,7 @@ function main() {
   }  
 }
 
-// main()
+main() */
 
 
 
@@ -459,24 +482,24 @@ function main() {
 function getSum(...args) {
   let total = 0
   for(const arg of args) {
-    total += arg
+    total = total + arg
   }
   return total
 }
 
-// console.log(getSum(2, 3, 5))
+//console.log(getSum(2, 5))
 
 // spread operator
 const arr = [1, 2, 3];
 const arr2 = [...arr, 4]
-// console.log(arr2)
+//console.log(arr2)
 
 // merge arrays
-const array1 = [1, 2, 3];
+const a = [1, 2, 3];
 
-const array2 = [4, 5, 6];
+const b = [4, 5, 6];
 
-const mergeArrays = [...array1, ...array2];
+const mergeArrays = [0, 'Marcelo', ...b, ...a];
 //console.log(mergeArrays)
 
 
@@ -491,16 +514,15 @@ const mergeArrays = [...array1, ...array2];
 const carro = {
   marca: 'Fiat',
   ano: 2018,
-  portas: 4,
+  portas: 2,
 }
 
-const marca = carro.marca
-const ano = carro.ano
+//const marca = carro.marca
+//const ano = carro.ano
 
-//const {marca, ano} = carro;
+const {marca, ano, portas} = carro;
 
-// console.log(marca)
-// console.log(ano)
+//console.log(`O carro é da marca ${marca}; ano ${ano} e tem ${portas} portas`)
 
 
 const cliente = {
@@ -516,13 +538,13 @@ const cliente = {
   }
 }
 
-// console.log(cliente.compras.digitais.livros);
-// console.log(cliente.compras.digitais.filmes);
+/* console.log(cliente.compras.digitais.livros);
+console.log(cliente.compras.digitais.filmes); */
 
-const {livros, videos} = cliente.compras.digitais;
+const {livros, filmes} = cliente.compras.digitais;
 
-// console.log(livros);
-// console.log(videos);
+ /* console.log(livros);
+ console.log(filmes); */
 
 // destructuring arrays
 const frutas = ['Banana', 'Uva', 'Morango'];
@@ -532,8 +554,8 @@ const segundaFruta = frutas[1];
 const terceiraFruta = frutas[2];
 
 // Com destructuring
-const [primeira, segunda, terceira] = frutas;
-// console.log(primeira)
+const [p, segunda, terceira] = frutas;
+//console.log(p)
 
 
 
@@ -553,7 +575,7 @@ function countDown(number) {
     }
 }
 
-// countDown(10);
+//countDown(10);
 
 
 
@@ -564,10 +586,67 @@ function countDown(number) {
 
 
 /* Default parameters */
-function say(message='Hi') {
+function say(message='ooiii') {
     console.log(message);
 }
 
-// say();
-// say('Hello')
+//say();
+//say('oi')
 
+
+
+
+
+
+
+
+/* Closures */
+// escopo léxico é o escopo onde a função foi definida
+
+import { somarNumeros } from './escopo.js'
+
+
+const result = somarNumeros()
+
+console.log(result)
+
+
+
+
+
+
+
+
+
+
+
+'----------------------------------------------------------------------------------------------------------------------'
+'----------------------------------------------------------------------------------------------------------------------'
+'----------------------------------------------------------------------------------------------------------------------'
+// Online classes
+
+// Prototypes
+// Importância:
+// 1 - Herança prototipal e programação funcional são os dois pilares do JS.
+// 2 - Não existem classes no JS. Elas são só syntax sugar p a herança baseada em prototipos. Java e C++ são baseados em classes.
+// No Js, qdo um objeto é criado, ele possui automaticamente uma propriedade que referencia um outro objeto, q é o prototype. 
+// todo objeto em JS, herda propriedade e métodos de seu prototype ascendente, ou seja, um objeto acessa propriedade e métodos de seu prototype.
+// Há uma sequência de prototypes até q o último elemento seja null
+
+// p setar o prototype de um objeto:
+// 1 - funcções construtoras
+// 2 - Object.create()
+// 3 . Object.setPrototypeOff()
+
+// funções construtoras -> facilitam a criação de objetos com as mesmas propriedades (sempre começam com letra maiúscula)
+// funções construtoras não são a mesma coisa que factory function
+// prototype é um objeto adicionado a uma função quando esta é criada. 
+
+
+
+// Factory Function
+// Não é classe, nem função construtora mas retorna um novo objeto
+
+/* const maker = ({carName, year}) => ({carName, year})
+
+const carMaker = maker({carName: 'Corolla', year: 2022}) */

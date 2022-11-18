@@ -1,5 +1,6 @@
 {
   "name": "aulas_beacademy",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -17,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Marcelovqvd/aulas_beacademy/issues"
   },
-  "homepage": "https://github.com/Marcelovqvd/aulas_beacademy#readme"
+  "homepage": "https://github.com/Marcelovqvd/aulas_beacademy#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.0"
+  }
 }
